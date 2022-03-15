@@ -17,6 +17,10 @@ inputs:
     description: 'Telegram Conversation ID for debugging'
     required: false
     default: ''
+  message:
+    description: 'Message to send'
+    required: false
+    default: ''
 runs:
   using: 'node16'
   main: 'index.js'
