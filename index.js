@@ -26,7 +26,7 @@ async function getTelegramChatID(telegramUserID, telegramBotToken){
       console.error(error)
     });
 
-    console.log(res);
+    console.log(res.data);
 
     /*res.result.forEach(element => {
       console.log(element);
