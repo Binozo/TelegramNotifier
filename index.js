@@ -53,10 +53,9 @@ async function getTelegramChatID(telegramUserID, telegramBotToken){
       console.error(error)
     });
 
-    console.log(res.data);
-
     res.data.result.forEach(element => {
       const messageFromUserID = element.message.from.id;
+      console.log(`Found User ID: ${messageFromUserID}, looking for User ID: ${telegramUserID}`);
       if(messageFromUserID == telegramUserID){
         return element.message.chat.id;
       }
