@@ -1,5 +1,6 @@
-name: 'Telegram Messenger'
+name: 'Telegram Message sender'
 description: 'Send debug/failure/success messages through Telegram to you'
+author: Binozo
 inputs:
   telegram-bot-token:
     description: 'Telegram Bot Token'
