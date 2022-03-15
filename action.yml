@@ -1,6 +1,9 @@
 name: 'Telegram Message sender'
 description: 'Send debug/failure/success messages through Telegram to you'
 author: Binozo
+branding:
+  icon: 'send'  
+  color: 'gray-dark'
 inputs:
   telegram-bot-token:
     description: 'Telegram Bot Token'
