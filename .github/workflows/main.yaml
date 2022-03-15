@@ -13,8 +13,8 @@ jobs:
         uses: ./ # Uses an action in the root directory
         id: hello
         with:
-          telegramBotToken: ${{secrets.TELEGRAM_BOT_TOKEN}}
-          telegramUserID: ${{secrets.TELEGRAM_TARGET_USER_ID}}
+          telegram-bot-token: ${{secrets.TELEGRAM_BOT_TOKEN}}
+          telegram-user-id: ${{secrets.TELEGRAM_TARGET_USER_ID}}
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"

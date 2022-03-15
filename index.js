@@ -9,9 +9,9 @@ try {
 }
 
 async function start(){
-  const telegramBotToken = core.getInput('telegramBotToken', {required: true, trimWhitespace: true});
-  const telegramUserID = core.getInput('telegramUserID', {required: true, trimWhitespace: true});
-  const telegramChatID = core.getInput("telegramChatID", {required: false, trimWhitespace: true});
+  const telegramBotToken = core.getInput('telegram-bot-token', {required: true, trimWhitespace: true});
+  const telegramUserID = core.getInput('telegram-user-id', {required: true, trimWhitespace: true});
+  const telegramChatID = core.getInput("telegram-chat-id", {required: false, trimWhitespace: true});
 
   if(telegramChatID.length == 0){
     console.log("No telegramChatID provided, searching for Chat with User ID");

@@ -1,13 +1,18 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  telegram-bot-token:
+    description: 'Telegram Bot Token'
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+    default: ''
+  telegram-user-id:
+    description: 'Target Telegram User ID'
+    required: true
+    default: ''
+  telegram-chat-id:
+    description: 'Telegram Conversation ID between $telegram-user-id and the bot'
+    required: false
+    default: ''
 runs:
   using: 'node16'
   main: 'index.js'
