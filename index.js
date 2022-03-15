@@ -3,7 +3,12 @@ const github = require('@actions/github');
 const axios = require('axios');
 
 try {
-  // `who-to-greet` input defined in action metadata file
+  start();
+} catch (error) {
+  core.setFailed(error.message);
+}
+
+async function start(){
   const telegramBotToken = core.getInput('telegramBotToken', {required: true, trimWhitespace: true});
   const telegramUserID = core.getInput('telegramUserID', {required: true, trimWhitespace: true});
   const telegramChatID = core.getInput("telegramChatID", {required: false, trimWhitespace: true});
@@ -12,8 +17,6 @@ try {
     console.log("No telegramChatID provided, searching for Chat with User ID");
     const telegramChatID = await getTelegramChatID(telegramUserID, telegramBotToken);
   }
-} catch (error) {
-  core.setFailed(error.message);
 }
 
 async function getTelegramChatID(telegramChatID, telegramBotToken){
