@@ -20,7 +20,7 @@ The message you want the bot to send. Default is "GitHub Workflow completed".
 ## Example usage
 ```
 - name: Hello world action step
-  uses: binozo/telegramnotifier@v1.0
+  uses: binozo/telegramnotifier@v1.2
   with:
     telegram-bot-token: ${{secrets.TELEGRAM_BOT_TOKEN}}
     telegram-user-id: ${{secrets.TELEGRAM_TARGET_USER_ID}}
