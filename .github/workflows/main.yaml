@@ -15,6 +15,7 @@ jobs:
         with:
           telegram-bot-token: ${{secrets.TELEGRAM_BOT_TOKEN}}
           telegram-user-id: ${{secrets.TELEGRAM_TARGET_USER_ID}}
+          telegram-debug-chat: ${{secrets.TELEGRAM_DEBUG_CHAT}}
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"

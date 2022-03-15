@@ -13,6 +13,10 @@ inputs:
     description: 'Telegram Conversation ID between $telegram-user-id and the bot'
     required: false
     default: ''
+  telegram-debug-chat:
+    description: 'Telegram Conversation ID for debugging'
+    required: false
+    default: ''
 runs:
   using: 'node16'
   main: 'index.js'
