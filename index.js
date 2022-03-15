@@ -16,7 +16,7 @@ try {
   core.setFailed(error.message);
 }
 
-function getTelegramChatID(telegramChatID, telegramBotToken){
+async function getTelegramChatID(telegramChatID, telegramBotToken){
   const res = await axios
     .get(`https://api.telegram.org/bot${telegramBotToken}/getUpdates`)
     .catch(error => {
