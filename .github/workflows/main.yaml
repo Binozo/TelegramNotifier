@@ -3,7 +3,7 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: A job to say hello world!
     steps:
       # To use this repository's private action,
       # you must check out the repository
@@ -11,12 +11,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Hello world action step
         uses: ./ # Uses an action in the root directory
-        id: hello
         with:
           telegram-bot-token: ${{secrets.TELEGRAM_BOT_TOKEN}}
           telegram-user-id: ${{secrets.TELEGRAM_TARGET_USER_ID}}
           telegram-debug-chat: ${{secrets.TELEGRAM_DEBUG_CHAT}}
           message: "Hello World!"
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"

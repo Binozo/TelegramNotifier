@@ -1,21 +1,28 @@
-# Hello world javascript action
+# Telegram Messenger
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+This action sends you messages you through Telegram.
 
 ## Inputs
 
-## `who-to-greet`
+## `telegram-bot-token`
+**Required** Your Telegram Bot Token
 
-**Required** The name of the person to greet. Default `"World"`.
+## `telegram-user-id`
+**Required** Your Telegram User ID
 
-## Outputs
+## `telegram-chat-id`
+Chat ID between you and your Telegram Bot. If empty the Bot will search for the Chat itself.\
+**Attention:** You have to send at least one Message to your Telegram Bot through Telegram. https://t.me/yourBotUsername
 
-## `time`
-
-The time we greeted you.
+## `message`
+The message you want the bot to send. Default is "GitHub Workflow completed".
 
 ## Example usage
-
-uses: actions/hello-world-javascript-action@v1.1
-with:
-  who-to-greet: 'Mona the Octocat'
+```
+- name: Hello world action step
+  uses: binozo/telegramnotifier@v1.0
+  with:
+    telegram-bot-token: ${{secrets.TELEGRAM_BOT_TOKEN}}
+    telegram-user-id: ${{secrets.TELEGRAM_TARGET_USER_ID}}
+    message: "Hello World!"
+```
