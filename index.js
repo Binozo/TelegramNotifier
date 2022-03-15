@@ -14,7 +14,7 @@ async function start(){
   const telegramChatID = core.getInput("telegram-chat-id", {required: false, trimWhitespace: true});
 
   if(telegramChatID.length == 0){
-    console.log("No telegramChatID provided, searching for Chat with User ID");
+    console.log("No telegram-chat-id provided, searching for Chat with User ID");
     const telegramChatID = await getTelegramChatID(telegramUserID, telegramBotToken);
   }
 }
@@ -26,8 +26,7 @@ async function getTelegramChatID(telegramChatID, telegramBotToken){
       console.error(error)
     });
 
-    const resultJSON = JSON.parse(res);
-    resultJSON.result.forEach(element => {
+    res.result.forEach(element => {
       console.log(element);
     });
 
