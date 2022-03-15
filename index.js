@@ -1,15 +1,34 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const axios = require('axios');
 
 try {
   // `who-to-greet` input defined in action metadata file
-  const nameToGreet = core.getInput('who-to-greet');
-  console.log(`Hello ${nameToGreet}!`);
-  const time = (new Date()).toTimeString();
-  core.setOutput("time", time);
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
+  const telegramBotToken = core.getInput('telegramBotToken', {required: true, trimWhitespace: true});
+  const telegramUserID = core.getInput('telegramUserID', {required: true, trimWhitespace: true});
+  const telegramChatID = core.getInput("telegramChatID", {required: false, trimWhitespace: true});
+
+  if(telegramChatID.length == 0){
+    console.log("No telegramChatID provided, searching for Chat with User ID");
+    const telegramChatID = await getTelegramChatID(telegramUserID, telegramBotToken);
+  }
 } catch (error) {
   core.setFailed(error.message);
+}
+
+function getTelegramChatID(telegramChatID, telegramBotToken){
+  const res = await axios
+    .get(`https://api.telegram.org/bot${telegramBotToken}/getUpdates`)
+    .catch(error => {
+      console.error(error)
+    });
+
+    const resultJSON = JSON.parse(res);
+    resultJSON.result.forEach(element => {
+      console.log(element);
+    });
+
+    return null;
+
+
 }
