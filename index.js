@@ -31,11 +31,11 @@ async function start(){
     message = "GitHub Workflow completed";
   }
 
-  await sendTelegramMessage(telegramChatID, message);
+  await sendTelegramMessage(telegramChatID, message, telegramBotToken);
 
 }
 
-async function sendTelegramMessage(chatID, content) {
+async function sendTelegramMessage(chatID, content, telegramBotToken) {
   const res = await axios
     .post(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
       chat_id: chatID,
@@ -55,7 +55,7 @@ async function getTelegramChatID(telegramUserID, telegramBotToken){
 
     res.data.result.forEach(element => {
       const messageFromUserID = element.message.from.id;
-      sendTelegramMessage(core.getInput("telegram-debug-chat"), `Found User ID: ${messageFromUserID}, looking for User ID: ${telegramUserID}`);
+      sendTelegramMessage(core.getInput("telegram-debug-chat"), `Found User ID: ${messageFromUserID}, looking for User ID: ${telegramUserID}`, telegramBotToken);
       if(messageFromUserID == telegramUserID){
         return element.message.chat.id;
       }
