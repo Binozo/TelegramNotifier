@@ -19,16 +19,18 @@ async function start(){
   }
 }
 
-async function getTelegramChatID(telegramChatID, telegramBotToken){
+async function getTelegramChatID(telegramUserID, telegramBotToken){
   const res = await axios
     .get(`https://api.telegram.org/bot${telegramBotToken}/getUpdates`)
     .catch(error => {
       console.error(error)
     });
 
-    res.result.forEach(element => {
+    console.log(res);
+
+    /*res.result.forEach(element => {
       console.log(element);
-    });
+    });*/
 
     return null;
 
