@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const axios = require('axios');
+const fs = require("fs");
 
 try {
   start();
@@ -12,6 +13,7 @@ async function start(){
   const telegramBotToken = core.getInput('telegram-bot-token', {required: true, trimWhitespace: true});
   const telegramUserID = core.getInput('telegram-user-id', {required: true, trimWhitespace: true});
   var telegramChatID = core.getInput("telegram-chat-id", {required: false, trimWhitespace: true});
+  var targetFilePath = core.getInput("file-path", {required: false});
 
   if(telegramChatID.length == 0){
     console.log("No telegram-chat-id provided, searching for Chat with User ID");
@@ -27,11 +29,15 @@ async function start(){
 
   var message = core.getInput('message', {required: false, trimWhitespace: false});
 
-  if(message.length == 0){
+  if(message.length === 0){
     message = "GitHub Workflow completed";
   }
 
   await sendTelegramMessage(telegramChatID, message, telegramBotToken);
+  if(targetFilePath.length != 0) {
+    // Send a file too
+    await sendFile(telegramChatID, targetFilePath, telegramBotToken);
+  }
 
 }
 
@@ -44,6 +50,17 @@ async function sendTelegramMessage(chatID, content, telegramBotToken) {
     .catch(error => {
       core.setFailed(error)
     });
+}
+
+async function sendFile(chatID, filePath, telegramBotToken) {
+  const res = await axios
+      .post(`https://api.telegram.org/bot${telegramBotToken}/sendDocument`, {
+        chat_id: chatID,
+        document: fs.createReadStream(filePath)
+      })
+      .catch(error => {
+        core.setFailed(error)
+      });
 }
 
 async function getTelegramChatID(telegramUserID, telegramBotToken){

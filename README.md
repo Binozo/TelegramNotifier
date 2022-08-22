@@ -10,6 +10,9 @@ This action sends you messages you through Telegram.
 ## `telegram-user-id`
 **Required** Your Telegram User ID
 
+## `  file-path`
+Pass an absolute filepath to send a file.
+
 ## `telegram-chat-id`
 Chat ID between you and your Telegram Bot. If empty the Bot will search for the Chat itself.\
 **Attention:** You have to send at least one Message to your Telegram Bot through Telegram. https://t.me/yourBotUsername
@@ -25,4 +28,5 @@ The message you want the bot to send. Default is "GitHub Workflow completed".
     telegram-bot-token: ${{secrets.TELEGRAM_BOT_TOKEN}}
     telegram-user-id: ${{secrets.TELEGRAM_TARGET_USER_ID}}
     message: "Hello World!"
+    file-path: ${{ github.workspace }}/build/app/outputs/flutter-apk/app-release.apk
 ```

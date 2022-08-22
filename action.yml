@@ -17,6 +17,10 @@ inputs:
     description: 'Telegram Conversation ID between $telegram-user-id and the bot'
     required: false
     default: ''
+  file-path:
+    description: 'Path to the file you want so send'
+    required: false
+    default: ''
   message:
     description: 'Message to send'
     required: false
