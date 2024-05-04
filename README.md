@@ -4,21 +4,15 @@ This action sends you messages you through Telegram.
 
 ## Inputs
 
-## `telegram-bot-token`
-**Required** Your Telegram Bot Token
+- `telegram-bot-token`®️ Your Telegram Bot Token
+- `telegram-user-id`®️ Your Telegram User ID
+- `message` The message you want the bot to send. Default is "GitHub Workflow completed"
+- `file-path` Pass an absolute filepath to send a file
+- `telegram-chat-id` Chat ID between you and your Telegram Bot. If empty the Bot will search for the Chat itself.
 
-## `telegram-user-id`
-**Required** Your Telegram User ID
+##### ®️ required attributes
 
-## `  file-path`
-Pass an absolute filepath to send a file.
-
-## `telegram-chat-id`
-Chat ID between you and your Telegram Bot. If empty the Bot will search for the Chat itself.\
 **Attention:** You have to send at least one Message to your Telegram Bot through Telegram. https://t.me/yourBotUsername
-
-## `message`
-The message you want the bot to send. Default is "GitHub Workflow completed".
 
 ## Example usage
 ```
