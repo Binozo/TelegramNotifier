@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Telegram Message sender
-        uses: Binozo/TelegramNotifier@v1.5
+        uses: Binozo/TelegramNotifier@v1.6
         with:
           telegram-bot-token: ${{secrets.TELEGRAM_BOT_TOKEN}}
           telegram-user-id: ${{secrets.TELEGRAM_TARGET_USER_ID}}
