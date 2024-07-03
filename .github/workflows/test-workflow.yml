@@ -9,5 +9,6 @@ jobs:
         uses: Binozo/TelegramNotifier@v1.6
         with:
           telegram-bot-token: ${{secrets.TELEGRAM_BOT_TOKEN}}
+          telegram-user-id: ${{secrets.TELEGRAM_TARGET_USER_ID}}
           telegram-chat-id: ${{secrets.TELEGRAM_TARGET_USER_ID}}
           message: "Hello World 💪"
