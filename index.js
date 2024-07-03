@@ -11,21 +11,8 @@ try {
 
 async function start(){
   const telegramBotToken = core.getInput('telegram-bot-token', {required: true, trimWhitespace: true});
-  const telegramUserID = core.getInput('telegram-user-id', {required: true, trimWhitespace: true});
-  var telegramChatID = core.getInput("telegram-chat-id", {required: false, trimWhitespace: true});
+  var telegramChatID = core.getInput("telegram-chat-id", {required: true, trimWhitespace: true});
   var targetFilePath = core.getInput("file-path", {required: false});
-
-  if(telegramChatID.length == 0){
-    console.log("No telegram-chat-id provided, searching for Chat with User ID");
-    telegramChatID = await getTelegramChatID(telegramUserID, telegramBotToken);
-
-    if(telegramChatID == null){
-      core.setFailed("No Chat found with User ID");
-      return;
-    }
-
-    console.log("Found Chat with User ID");
-  }
 
   var message = core.getInput('message', {required: false, trimWhitespace: false});
 

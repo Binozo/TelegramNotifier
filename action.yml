@@ -9,13 +9,9 @@ inputs:
     description: 'Telegram Bot Token'
     required: true
     default: ''
-  telegram-user-id:
-    description: 'Target Telegram User ID'
-    required: true
-    default: ''
   telegram-chat-id:
-    description: 'Telegram Conversation ID between $telegram-user-id and the bot'
-    required: false
+    description: 'Chat ID between you and your Telegram Bot'
+    required: true
     default: ''
   file-path:
     description: 'Path to the file you want so send'
