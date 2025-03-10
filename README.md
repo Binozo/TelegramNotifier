@@ -16,7 +16,7 @@ This action allows you to send messages through Telegram
 ## Example usage
 ```
 - name: Hello world action step
-  uses: binozo/telegramnotifier@v1.7
+  uses: binozo/telegramnotifier@v1.8
   with:
     telegram-bot-token: ${{secrets.TELEGRAM_BOT_TOKEN}}
     telegram-chat-id: ${{secrets.TELEGRAM_TARGET_USER_ID}}
