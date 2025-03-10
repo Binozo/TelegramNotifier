@@ -1,6 +1,6 @@
 # Telegram Messenger
 
-This action sends you messages you through Telegram.
+This action allows you to send messages through Telegram
 
 ## Inputs
 
